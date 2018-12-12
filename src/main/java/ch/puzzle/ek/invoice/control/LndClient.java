@@ -1,4 +1,4 @@
-package ch.puzzle.ek.invoice.boundary;
+package ch.puzzle.ek.invoice.control;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
@@ -14,7 +14,6 @@ public class LndClient {
     String lndHostname;
     @ConfigProperty(name = "lnd.api.port", defaultValue = "8080")
     String lndPort;
-
     @ConfigProperty(name = "lnd.api.sse.path", defaultValue = "/resources/sse/invoices")
     String lndPath;
 
@@ -31,6 +30,6 @@ public class LndClient {
         eventSource.register(object -> {
             object.readData();
             eventSource.close();
-        } );
+        });
     }
 }
